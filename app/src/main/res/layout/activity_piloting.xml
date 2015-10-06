@@ -158,4 +158,18 @@
         android:layout_alignRight="@+id/gazDownBt"
         android:layout_alignEnd="@+id/gazDownBt"
         android:gravity="center_horizontal"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SPIN!"
+        android:id="@+id/button2"
+        android:layout_above="@+id/gazUpBt"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/batteryLabel"
+        android:layout_below="@+id/emergencyBt"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
 </RelativeLayout>
