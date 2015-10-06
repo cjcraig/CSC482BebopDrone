@@ -63,6 +63,9 @@ public class PilotingActivity extends Activity implements ARDeviceControllerList
     private Button rollLeftBt;
     private Button rollRightBt;
 
+    //this button will make the aircraft rotate 360 degrees
+    private Button spinBt;
+
     private TextView batteryLabel;
 
     private AlertDialog alertDialog;
@@ -261,6 +264,34 @@ public class PilotingActivity extends Activity implements ARDeviceControllerList
                 return true;
             }
         });
+
+        //##Set up the Spin button
+        spinBt=(Button) findViewById(R.id.spinBtID);
+        spinBt.setOnTouchListener(new View.OnTouchListener()
+        {
+            @Override
+            public boolean onTouch(View v, MotionEvent event)
+            {
+                v.setPressed(true);
+
+               if(event.getAction() == MotionEvent.ACTION_UP) {
+                   v.setPressed(false);
+                   if (deviceController != null) {
+
+                       deviceController.getFeatureARDrone3().setPilotingPCMDYaw((byte) 50);
+                       try {
+                           Thread.sleep(1000);
+                       } catch (InterruptedException e) {
+                           e.printStackTrace();
+                       }
+                       deviceController.getFeatureARDrone3().setPilotingPCMDYaw((byte)0);
+                   }
+
+               }
+                return true;
+            }
+        });
+
         yawRightBt = (Button) findViewById(R.id.yawRightBt);
         yawRightBt.setOnTouchListener(new View.OnTouchListener()
         {
