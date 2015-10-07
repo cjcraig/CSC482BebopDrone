@@ -14,7 +14,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.parrot.arsdk.ardiscovery.ARDISCOVERY_PRODUCT_ENUM;
 import com.parrot.arsdk.ardiscovery.ARDiscoveryDeviceService;
@@ -75,6 +77,15 @@ public class MainActivity extends ActionBarActivity implements ARDiscoveryServic
     private BroadcastReceiver ardiscoveryServicesDevicesListUpdatedReceiver;
 
     public void buttonOnClick(View v){
+
+        TextView cv=(TextView) findViewById(R.id.clayTextID);
+
+        if(cv.getText().equals("HOYDEOYDEO")) {
+            cv.setText("CLAYTON'S TEXT");
+        }
+        else if(cv.getText().equals("CLAYTON'S TEXT")) {
+            cv.setText("HOYDEOYDEO");
+        }
         System.out.println("HOYDEOYDEO");
     }
 

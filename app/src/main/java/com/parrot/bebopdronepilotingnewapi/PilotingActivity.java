@@ -278,7 +278,7 @@ public class PilotingActivity extends Activity implements ARDeviceControllerList
                    v.setPressed(false);
                    if (deviceController != null) {
 
-                       deviceController.getFeatureARDrone3().setPilotingPCMDYaw((byte) 50);
+                       deviceController.getFeatureARDrone3().setPilotingPCMDYaw((byte) 360);
                        try {
                            Thread.sleep(1000);
                        } catch (InterruptedException e) {
