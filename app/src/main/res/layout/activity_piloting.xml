@@ -164,12 +164,10 @@
         android:layout_height="wrap_content"
         android:text="SPIN!"
         android:id="@+id/spinBtID"
-        android:layout_above="@+id/gazUpBt"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_toEndOf="@+id/batteryLabel"
         android:layout_below="@+id/emergencyBt"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_toLeftOf="@+id/yawLeftBt"
+        android:layout_above="@+id/rollRightBt"
+        android:layout_toRightOf="@+id/rollRightBt"
+        android:layout_toEndOf="@+id/rollRightBt" />
 
 </RelativeLayout>
