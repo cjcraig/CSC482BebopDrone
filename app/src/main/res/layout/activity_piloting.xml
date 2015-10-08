@@ -170,4 +170,14 @@
         android:layout_toRightOf="@+id/rollRightBt"
         android:layout_toEndOf="@+id/rollRightBt" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Shapes >>"
+        android:id="@+id/shapesBT"
+        android:width="150dp"
+        android:layout_alignBottom="@+id/emergencyBt"
+        android:layout_alignLeft="@+id/gazUpBt"
+        android:layout_alignStart="@+id/gazUpBt" />
+
 </RelativeLayout>

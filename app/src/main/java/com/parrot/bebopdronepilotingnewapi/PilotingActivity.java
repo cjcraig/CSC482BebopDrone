@@ -63,6 +63,9 @@ public class PilotingActivity extends Activity implements ARDeviceControllerList
     private Button rollLeftBt;
     private Button rollRightBt;
 
+    //this is a button to change the menu
+    private Button shapesMenuBt;
+
     //this button will make the aircraft rotate 360 degrees
     private Button spinBt;
 
@@ -170,23 +173,19 @@ public class PilotingActivity extends Activity implements ARDeviceControllerList
         gazUpBt = (Button) findViewById(R.id.gazUpBt);
         gazUpBt.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public boolean onTouch(View v, MotionEvent event)
-            {
-                switch (event.getAction())
-                {
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
                         v.setPressed(true);
-                        if (deviceController != null)
-                        {
+                        if (deviceController != null) {
                             deviceController.getFeatureARDrone3().setPilotingPCMDGaz((byte) 50);
                         }
                         break;
 
                     case MotionEvent.ACTION_UP:
                         v.setPressed(false);
-                        if (deviceController != null)
-                        {
-                            deviceController.getFeatureARDrone3().setPilotingPCMDGaz((byte)0);
+                        if (deviceController != null) {
+                            deviceController.getFeatureARDrone3().setPilotingPCMDGaz((byte) 0);
 
                         }
                         break;
@@ -243,7 +242,7 @@ public class PilotingActivity extends Activity implements ARDeviceControllerList
                         v.setPressed(true);
                         if (deviceController != null)
                         {
-                            deviceController.getFeatureARDrone3().setPilotingPCMDYaw((byte)-50);
+                            deviceController.getFeatureARDrone3().setPilotingPCMDYaw((byte) -50);
 
                         }
                         break;
@@ -264,6 +263,25 @@ public class PilotingActivity extends Activity implements ARDeviceControllerList
                 return true;
             }
         });
+
+        //##Go to menu for managing shapes stuffff
+        shapesMenuBt=(Button) findViewById(R.id.shapesBT);
+        shapesMenuBt.setOnTouchListener(new View.OnTouchListener()
+        {
+            @Override
+            public boolean onTouch(View v, MotionEvent event)
+            {
+                v.setPressed(true);
+
+
+                Intent intent = new Intent(PilotingActivity.this, ShapePilotingActivity.class);
+//                intent.putExtra(ShapePilotingActivity.EXTRA_DEVICE_SERVICE, service);
+
+                startActivity(intent);
+                return true;
+            }
+        });
+
 
         //##Set up the Spin button
         spinBt=(Button) findViewById(R.id.spinBtID);
