@@ -278,9 +278,9 @@ public class PilotingActivity extends Activity implements ARDeviceControllerList
                    v.setPressed(false);
                    if (deviceController != null) {
 
-                       deviceController.getFeatureARDrone3().setPilotingPCMDYaw((byte) 360);
+                       deviceController.getFeatureARDrone3().setPilotingPCMDYaw((byte) 60);//input is degrees per second
                        try {
-                           Thread.sleep(1000);
+                           Thread.sleep(6000);//number of miliseconds to perform rotation
                        } catch (InterruptedException e) {
                            e.printStackTrace();
                        }
