@@ -1,4 +1,4 @@
-package com.parrot.bebopdronepilotingnewapi;
+package com.parrot.activities;
 
 import android.app.Activity;
 import android.os.Bundle;

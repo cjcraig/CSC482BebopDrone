@@ -1,4 +1,4 @@
-package com.parrot.bebopdronepilotingnewapi;
+package com.parrot.activities;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;

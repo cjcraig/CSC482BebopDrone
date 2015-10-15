@@ -1,4 +1,4 @@
-package com.parrot.bebopdronepilotingnewapi;
+package com.parrot.activities;
 
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
@@ -14,7 +14,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
