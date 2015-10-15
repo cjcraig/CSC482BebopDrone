@@ -17,7 +17,7 @@ import com.parrot.bebopdronepiloting.R;
 /**
  * Created by gnasr on 10/8/2015.
  */
-public class ShapePilotingActivity extends Activity implements ARDeviceControllerListener, ARDeviceControllerStreamListener, SurfaceHolder.Callback {
+public class  ShapePilotingActivity extends Activity implements ARDeviceControllerListener, ARDeviceControllerStreamListener, SurfaceHolder.Callback {
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
