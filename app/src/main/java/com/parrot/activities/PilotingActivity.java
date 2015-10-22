@@ -361,8 +361,7 @@ public class PilotingActivity extends Activity implements ARDeviceControllerList
                         }
                         break;
 
-                    case MotionEve
-                        nt.ACTION_UP:
+                    case MotionEvent.ACTION_UP:
                         v.setPressed(false);
                         if (deviceController != null)
                         {
