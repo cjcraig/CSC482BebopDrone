@@ -28,6 +28,20 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:appcompat-v7:21.0.3'
+    compile files('libs/jmdns.jar')
+    compile files('libs/libARCommands.jar')
+    compile files('libs/libARController.jar')
+    compile files('libs/libARDataTransfer.jar')
+    compile files('libs/libARDiscovery.jar')
+    compile files('libs/libARMavlink.jar')
+    compile files('libs/libARMedia.jar')
+    compile files('libs/libARNetwork.jar')
+    compile files('libs/libARNetworkAL.jar')
+    compile files('libs/libARSAL.jar')
+    compile files('libs/libARStream.jar')
+    compile files('libs/libARUpdater.jar')
+    compile files('libs/libARUtils.jar')
+    compile files('libs/sanselan-0.97-incubator.jar')
 }
