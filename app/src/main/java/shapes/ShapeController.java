@@ -5,5 +5,4 @@ package shapes;
  */
 public class ShapeController {
     //I totally LOVE Android Studio!
-    //COMMITTING 10/22
 }
