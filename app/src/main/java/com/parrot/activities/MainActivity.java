@@ -65,7 +65,7 @@ public class MainActivity extends ActionBarActivity implements ARDiscoveryServic
     }
 
     private ListView listView ;
-    private List<ARDiscoveryDeviceService> deviceList;
+    public static List<ARDiscoveryDeviceService> deviceList;//so that other classes can use this
     private String[] deviceNameList;
 
     private ARDiscoveryService ardiscoveryService;
