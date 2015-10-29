@@ -274,11 +274,12 @@ public class PilotingActivity extends Activity implements ARDeviceControllerList
             @Override
             public boolean onTouch(View v, MotionEvent event)
             {
-                v.setPressed(true);
 
+                ARDiscoveryDeviceService service = MainActivity.deviceList.get(0);
 
                 Intent intent = new Intent(PilotingActivity.this, ShapePilotingActivity.class);
-//                intent.putExtra(ShapePilotingActivity.EXTRA_DEVICE_SERVICE, service);
+                intent.putExtra(PilotingActivity.EXTRA_DEVICE_SERVICE, service);
+
 
                 startActivity(intent);
                 return true;
