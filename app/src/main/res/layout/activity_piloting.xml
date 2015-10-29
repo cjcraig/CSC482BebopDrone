@@ -192,4 +192,13 @@
         android:layout_alignLeft="@+id/yawRightBt"
         android:layout_alignStart="@+id/yawRightBt" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TRI"
+        android:id="@+id/triButton"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
 </RelativeLayout>

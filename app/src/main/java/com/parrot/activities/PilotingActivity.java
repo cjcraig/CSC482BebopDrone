@@ -72,6 +72,9 @@ public class PilotingActivity extends Activity implements ARDeviceControllerList
     //this button will make the aircraft fly in a square shape
     private Button squareBt;
 
+    //this button will make the aircraft fly in a triangle pattern
+    private Button triBt;
+
     private TextView batteryLabel;
 
     private AlertDialog alertDialog;
@@ -444,6 +447,71 @@ public class PilotingActivity extends Activity implements ARDeviceControllerList
                 return true;
             }
         });
+
+        //##Here, we will create a triangle button
+        triBt=(Button) findViewById(R.id.triButton);
+        triBt.setOnTouchListener(new View.OnTouchListener()
+        {
+            @Override
+            public boolean onTouch(View v, MotionEvent event)
+            {
+                v.setPressed(true);
+
+                if(event.getAction() == MotionEvent.ACTION_UP){
+
+                    v.setPressed(false);
+
+                    if(deviceController!=null){
+
+                        for(int i=0;i<3;i++){
+
+                            //BEGIN FORWARD MVMENT
+
+                            deviceController.getFeatureARDrone3().setPilotingPCMDPitch((byte) 50);
+                            deviceController.getFeatureARDrone3().setPilotingPCMDFlag((byte)1);
+
+                            try{
+                                Thread.sleep(1000);
+                            }catch (InterruptedException e){
+                                e.printStackTrace();
+                            }
+
+                            deviceController.getFeatureARDrone3().setPilotingPCMDPitch((byte) 0);
+                            deviceController.getFeatureARDrone3().setPilotingPCMDFlag((byte) 0);
+                            //END FORWARD MVMENT
+
+
+                            try{
+                                Thread.sleep(250);
+                            }catch (InterruptedException e){
+                                e.printStackTrace();
+                            }
+
+
+                            //BEGIN ROTATION
+                            deviceController.getFeatureARDrone3().setPilotingPCMDYaw((byte) 120);
+                            try{
+                                Thread.sleep(1000);
+                            }catch (InterruptedException e){
+                                e.printStackTrace();
+                            }
+                            deviceController.getFeatureARDrone3().setPilotingPCMDYaw((byte)0);
+                            //END ROTATION
+
+                            try{
+                                Thread.sleep(250);
+                            }catch (InterruptedException e){
+                                e.printStackTrace();
+                            }
+
+                        }
+
+                    }
+                }
+                return true;
+            }
+        });
+
 
         yawRightBt = (Button) findViewById(R.id.yawRightBt);
         yawRightBt.setOnTouchListener(new View.OnTouchListener()
