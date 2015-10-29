@@ -69,6 +69,9 @@ public class PilotingActivity extends Activity implements ARDeviceControllerList
     //this button will make the aircraft rotate 360 degrees
     private Button spinBt;
 
+    //this button will make the aircraft fly in a square shape
+    private Button squareBt;
+
     private TextView batteryLabel;
 
     private AlertDialog alertDialog;
@@ -306,6 +309,116 @@ public class PilotingActivity extends Activity implements ARDeviceControllerList
                    }
 
                }
+                return true;
+            }
+        });
+        //##Set up the Square button
+                    //what do I do for R.id.[ID]
+        squareBt=(Button) findViewById(R.id.squareBtID);
+        squareBt.setOnTouchListener(new View.OnTouchListener()
+        {
+            @Override
+            public boolean onTouch(View v, MotionEvent event)
+            {
+                v.setPressed(true);
+
+                if(event.getAction() == MotionEvent.ACTION_UP) {
+                    v.setPressed(false);
+                    if (deviceController != null) {
+
+                        //First Side (Origin from current position)
+                        deviceController.getFeatureARDrone3().setPilotingPCMDPitch((byte) 50);
+                        deviceController.getFeatureARDrone3().setPilotingPCMDFlag((byte) 1);
+                        try {
+                            Thread.sleep(1000);//number of miliseconds to fly forward
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        deviceController.getFeatureARDrone3().setPilotingPCMDPitch((byte) 0);
+                        deviceController.getFeatureARDrone3().setPilotingPCMDFlag((byte) 0);
+                        try {
+                            Thread.sleep(100);//number of miliseconds to fly forward
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        deviceController.getFeatureARDrone3().setPilotingPCMDYaw((byte)90);
+                        try {
+                            Thread.sleep(1000);//number of miliseconds to fly forward
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+
+
+                        //Second Side
+                        deviceController.getFeatureARDrone3().setPilotingPCMDPitch((byte) 50);
+                        deviceController.getFeatureARDrone3().setPilotingPCMDFlag((byte) 1);
+                        try {
+                            Thread.sleep(1000);//number of miliseconds to fly forward
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        deviceController.getFeatureARDrone3().setPilotingPCMDPitch((byte) 0);
+                        deviceController.getFeatureARDrone3().setPilotingPCMDFlag((byte) 0);
+                        try {
+                            Thread.sleep(100);//number of miliseconds to fly forward
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        deviceController.getFeatureARDrone3().setPilotingPCMDYaw((byte)90);
+                        try {
+                            Thread.sleep(1000);//number of miliseconds to fly forward
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+
+
+                        //Third Side
+                        deviceController.getFeatureARDrone3().setPilotingPCMDPitch((byte) 50);
+                        deviceController.getFeatureARDrone3().setPilotingPCMDFlag((byte) 1);
+                        try {
+                            Thread.sleep(1000);//number of miliseconds to fly forward
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        deviceController.getFeatureARDrone3().setPilotingPCMDPitch((byte) 0);
+                        deviceController.getFeatureARDrone3().setPilotingPCMDFlag((byte) 0);
+                        try {
+                            Thread.sleep(100);//number of miliseconds to fly forward
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        deviceController.getFeatureARDrone3().setPilotingPCMDYaw((byte)90);
+                        try {
+                            Thread.sleep(1000);//number of miliseconds to fly forward
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+
+
+                        //Final Side
+                        deviceController.getFeatureARDrone3().setPilotingPCMDPitch((byte) 50);
+                        deviceController.getFeatureARDrone3().setPilotingPCMDFlag((byte) 1);
+                        try {
+                            Thread.sleep(1000);//number of miliseconds to fly forward
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        deviceController.getFeatureARDrone3().setPilotingPCMDPitch((byte) 0);
+                        deviceController.getFeatureARDrone3().setPilotingPCMDFlag((byte) 0);
+                        try {
+                            Thread.sleep(100);//number of miliseconds to fly forward
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        deviceController.getFeatureARDrone3().setPilotingPCMDYaw((byte)90);
+                        try {
+                            Thread.sleep(1000);//number of miliseconds to fly forward
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                }
                 return true;
             }
         });
