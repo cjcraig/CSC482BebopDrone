@@ -342,13 +342,18 @@ public class PilotingActivity extends Activity implements ARDeviceControllerList
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
-                        deviceController.getFeatureARDrone3().setPilotingPCMDYaw((byte)90);
+                        deviceController.getFeatureARDrone3().setPilotingPCMDYaw((byte) 90);
                         try {
                             Thread.sleep(1000);//number of miliseconds to fly forward
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
-
+                        deviceController.getFeatureARDrone3().setPilotingPCMDYaw((byte)0);
+                        try {
+                            Thread.sleep(100);//number of miliseconds to fly forward
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
 
                         //Second Side
                         deviceController.getFeatureARDrone3().setPilotingPCMDPitch((byte) 50);
@@ -371,7 +376,12 @@ public class PilotingActivity extends Activity implements ARDeviceControllerList
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
-
+                        deviceController.getFeatureARDrone3().setPilotingPCMDYaw((byte)0);
+                        try {
+                            Thread.sleep(100);//number of miliseconds to fly forward
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
 
                         //Third Side
                         deviceController.getFeatureARDrone3().setPilotingPCMDPitch((byte) 50);
@@ -388,13 +398,18 @@ public class PilotingActivity extends Activity implements ARDeviceControllerList
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
-                        deviceController.getFeatureARDrone3().setPilotingPCMDYaw((byte)90);
+                        deviceController.getFeatureARDrone3().setPilotingPCMDYaw((byte) 90);
                         try {
                             Thread.sleep(1000);//number of miliseconds to fly forward
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
-
+                        deviceController.getFeatureARDrone3().setPilotingPCMDYaw((byte)0);
+                        try {
+                            Thread.sleep(100);//number of miliseconds to fly forward
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
 
                         //Final Side
                         deviceController.getFeatureARDrone3().setPilotingPCMDPitch((byte) 50);
@@ -411,9 +426,15 @@ public class PilotingActivity extends Activity implements ARDeviceControllerList
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
-                        deviceController.getFeatureARDrone3().setPilotingPCMDYaw((byte)90);
+                        deviceController.getFeatureARDrone3().setPilotingPCMDYaw((byte) 90);
                         try {
                             Thread.sleep(1000);//number of miliseconds to fly forward
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        deviceController.getFeatureARDrone3().setPilotingPCMDYaw((byte)0);
+                        try {
+                            Thread.sleep(100);//number of miliseconds to fly forward
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
