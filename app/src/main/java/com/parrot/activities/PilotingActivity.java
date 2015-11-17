@@ -40,6 +40,8 @@ import java.nio.ByteBuffer;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
+import shapes.ShapeController;
+
 public class PilotingActivity extends Activity implements ARDeviceControllerListener, ARDeviceControllerStreamListener, SurfaceHolder.Callback
 {
     private static String TAG = PilotingActivity.class.getSimpleName();
@@ -328,120 +330,7 @@ public class PilotingActivity extends Activity implements ARDeviceControllerList
 
                 if(event.getAction() == MotionEvent.ACTION_UP) {
                     v.setPressed(false);
-                    if (deviceController != null) {
-
-                        //First Side (Origin from current position)
-                        deviceController.getFeatureARDrone3().setPilotingPCMDPitch((byte) 50);
-                        deviceController.getFeatureARDrone3().setPilotingPCMDFlag((byte) 1);
-                        try {
-                            Thread.sleep(1000);//number of miliseconds to fly forward
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                        deviceController.getFeatureARDrone3().setPilotingPCMDPitch((byte) 0);
-                        deviceController.getFeatureARDrone3().setPilotingPCMDFlag((byte) 0);
-                        try {
-                            Thread.sleep(100);//number of miliseconds to fly forward
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                        deviceController.getFeatureARDrone3().setPilotingPCMDYaw((byte) 90);
-                        try {
-                            Thread.sleep(1000);//number of miliseconds to fly forward
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                        deviceController.getFeatureARDrone3().setPilotingPCMDYaw((byte)0);
-                        try {
-                            Thread.sleep(100);//number of miliseconds to fly forward
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-
-                        //Second Side
-                        deviceController.getFeatureARDrone3().setPilotingPCMDPitch((byte) 50);
-                        deviceController.getFeatureARDrone3().setPilotingPCMDFlag((byte) 1);
-                        try {
-                            Thread.sleep(1000);//number of miliseconds to fly forward
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                        deviceController.getFeatureARDrone3().setPilotingPCMDPitch((byte) 0);
-                        deviceController.getFeatureARDrone3().setPilotingPCMDFlag((byte) 0);
-                        try {
-                            Thread.sleep(100);//number of miliseconds to fly forward
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                        deviceController.getFeatureARDrone3().setPilotingPCMDYaw((byte)90);
-                        try {
-                            Thread.sleep(1000);//number of miliseconds to fly forward
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                        deviceController.getFeatureARDrone3().setPilotingPCMDYaw((byte)0);
-                        try {
-                            Thread.sleep(100);//number of miliseconds to fly forward
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-
-                        //Third Side
-                        deviceController.getFeatureARDrone3().setPilotingPCMDPitch((byte) 50);
-                        deviceController.getFeatureARDrone3().setPilotingPCMDFlag((byte) 1);
-                        try {
-                            Thread.sleep(1000);//number of miliseconds to fly forward
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                        deviceController.getFeatureARDrone3().setPilotingPCMDPitch((byte) 0);
-                        deviceController.getFeatureARDrone3().setPilotingPCMDFlag((byte) 0);
-                        try {
-                            Thread.sleep(100);//number of miliseconds to fly forward
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                        deviceController.getFeatureARDrone3().setPilotingPCMDYaw((byte) 90);
-                        try {
-                            Thread.sleep(1000);//number of miliseconds to fly forward
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                        deviceController.getFeatureARDrone3().setPilotingPCMDYaw((byte)0);
-                        try {
-                            Thread.sleep(100);//number of miliseconds to fly forward
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-
-                        //Final Side
-                        deviceController.getFeatureARDrone3().setPilotingPCMDPitch((byte) 50);
-                        deviceController.getFeatureARDrone3().setPilotingPCMDFlag((byte) 1);
-                        try {
-                            Thread.sleep(1000);//number of miliseconds to fly forward
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                        deviceController.getFeatureARDrone3().setPilotingPCMDPitch((byte) 0);
-                        deviceController.getFeatureARDrone3().setPilotingPCMDFlag((byte) 0);
-                        try {
-                            Thread.sleep(100);//number of miliseconds to fly forward
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                        deviceController.getFeatureARDrone3().setPilotingPCMDYaw((byte) 90);
-                        try {
-                            Thread.sleep(1000);//number of miliseconds to fly forward
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                        deviceController.getFeatureARDrone3().setPilotingPCMDYaw((byte)0);
-                        try {
-                            Thread.sleep(100);//number of miliseconds to fly forward
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                    }
+                    ShapeController.squareCommands(deviceController, ShapeController.ORIENTATION.Directional, 1000, (byte)0);
 
                 }
                 return true;
@@ -463,48 +352,7 @@ public class PilotingActivity extends Activity implements ARDeviceControllerList
 
                     if(deviceController!=null){
 
-                        for(int i=0;i<3;i++){
-
-                            //BEGIN FORWARD MVMENT
-
-                            deviceController.getFeatureARDrone3().setPilotingPCMDPitch((byte) 50);
-                            deviceController.getFeatureARDrone3().setPilotingPCMDFlag((byte)1);
-
-                            try{
-                                Thread.sleep(1000);
-                            }catch (InterruptedException e){
-                                e.printStackTrace();
-                            }
-
-                            deviceController.getFeatureARDrone3().setPilotingPCMDPitch((byte) 0);
-                            deviceController.getFeatureARDrone3().setPilotingPCMDFlag((byte) 0);
-                            //END FORWARD MVMENT
-
-
-                            try{
-                                Thread.sleep(250);
-                            }catch (InterruptedException e){
-                                e.printStackTrace();
-                            }
-
-
-                            //BEGIN ROTATION
-                            deviceController.getFeatureARDrone3().setPilotingPCMDYaw((byte) 120);
-                            try{
-                                Thread.sleep(1000);
-                            }catch (InterruptedException e){
-                                e.printStackTrace();
-                            }
-                            deviceController.getFeatureARDrone3().setPilotingPCMDYaw((byte)0);
-                            //END ROTATION
-
-                            try{
-                                Thread.sleep(250);
-                            }catch (InterruptedException e){
-                                e.printStackTrace();
-                            }
-
-                        }
+                        ShapeController.triangleCommands(deviceController, ShapeController.ORIENTATION.Directional, 1000, (byte)0);
 
                     }
                 }
