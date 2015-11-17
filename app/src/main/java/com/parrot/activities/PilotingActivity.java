@@ -74,6 +74,9 @@ public class PilotingActivity extends Activity implements ARDeviceControllerList
     //this button will make the aircraft fly in a square shape
     private Button squareBt;
 
+    //this button will make the aircraft fly in a circle pattern
+    private Button circleBt;
+
     //this button will make the aircraft fly in a triangle pattern
     private Button triBt;
 
@@ -210,24 +213,20 @@ public class PilotingActivity extends Activity implements ARDeviceControllerList
         gazDownBt = (Button) findViewById(R.id.gazDownBt);
         gazDownBt.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public boolean onTouch(View v, MotionEvent event)
-            {
-                switch (event.getAction())
-                {
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
                         v.setPressed(true);
-                        if (deviceController != null)
-                        {
-                            deviceController.getFeatureARDrone3().setPilotingPCMDGaz((byte)-50);
+                        if (deviceController != null) {
+                            deviceController.getFeatureARDrone3().setPilotingPCMDGaz((byte) -50);
 
                         }
                         break;
 
                     case MotionEvent.ACTION_UP:
                         v.setPressed(false);
-                        if (deviceController != null)
-                        {
-                            deviceController.getFeatureARDrone3().setPilotingPCMDGaz((byte)0);
+                        if (deviceController != null) {
+                            deviceController.getFeatureARDrone3().setPilotingPCMDGaz((byte) 0);
                         }
                         break;
 
@@ -318,6 +317,36 @@ public class PilotingActivity extends Activity implements ARDeviceControllerList
                 return true;
             }
         });
+        //##Set up the Circle Button
+        circleBt=(Button) findViewById(R.id.circleBtID);
+        circleBt.setOnTouchListener(new View.OnTouchListener()
+        {
+            @Override
+            public boolean onTouch(View v, MotionEvent event)
+            {
+                v.setPressed(true);
+
+                if(event.getAction() == MotionEvent.ACTION_UP) {
+                    v.setPressed(false);
+                    if (deviceController != null) {
+                        deviceController.getFeatureARDrone3().setPilotingPCMDPitch((byte) 50);
+                        deviceController.getFeatureARDrone3().setPilotingPCMDFlag((byte) 1);
+                        deviceController.getFeatureARDrone3().setPilotingPCMDYaw((byte) 60);//input is degrees per second
+                        try {
+                            Thread.sleep(6000);//number of miliseconds to perform rotation
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        deviceController.getFeatureARDrone3().setPilotingPCMDPitch((byte) 0);
+                        deviceController.getFeatureARDrone3().setPilotingPCMDFlag((byte) 0);
+                        deviceController.getFeatureARDrone3().setPilotingPCMDYaw((byte)0);
+                    }
+
+                }
+                return true;
+            }
+        });
+
         //##Set up the Square button
                     //what do I do for R.id.[ID]
         squareBt=(Button) findViewById(R.id.squareBtID);
