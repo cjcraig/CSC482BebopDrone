@@ -188,6 +188,63 @@ public class ShapeController {
         }
     }
 
+
+    static double sideLength = 60;
+    static double radius = sideLength/(2*Math.cos(Math.PI/6));
+    public static void nGonCommands(ARDeviceController deviceController, ORIENTATION o, int n, int actionDuration, byte speed){
+        double angle = 360/(double)n;
+        sideLength = 2*radius*Math.cos(Math.toRadians(angle)/2);
+        switch(o){
+            case Directional:
+                for(int i=0;i<n;i++){
+
+                    //BEGIN FORWARD MVMENT
+
+                    deviceController.getFeatureARDrone3().setPilotingPCMDPitch((byte) sideLength);
+                    deviceController.getFeatureARDrone3().setPilotingPCMDFlag((byte)1);
+
+                    try{
+                        Thread.sleep(actionDuration);
+                    }catch (InterruptedException e){
+                        e.printStackTrace();
+                    }
+
+                    deviceController.getFeatureARDrone3().setPilotingPCMDPitch((byte) 0);
+                    deviceController.getFeatureARDrone3().setPilotingPCMDFlag((byte) 0);
+                    //END FORWARD MVMENT
+
+
+                    try{
+                        Thread.sleep(250);
+                    }catch (InterruptedException e){
+                        e.printStackTrace();
+                    }
+
+
+                    //BEGIN ROTATION
+                    deviceController.getFeatureARDrone3().setPilotingPCMDYaw((byte) angle);
+                    try{
+                        Thread.sleep(1000);
+                    }catch (InterruptedException e){
+                        e.printStackTrace();
+                    }
+                    deviceController.getFeatureARDrone3().setPilotingPCMDYaw((byte)0);
+                    //END ROTATION
+
+                    try{
+                        Thread.sleep(250);
+                    }catch (InterruptedException e){
+                        e.printStackTrace();
+                    }
+
+                }
+                break;
+            case FrontFacing:
+
+                break;
+        }
+    }
+
     public static void circleCommands(ORIENTATION o, int actionDuration, byte speed){
         switch(o){
             case Directional:
